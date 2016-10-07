@@ -1,25 +1,25 @@
-var CountStore = require('../stores/countStore.js');
+var ItemStore = require('../stores/itemStore.js');
 
 var ComponentTwo = React.createClass({
 
   componentDidMount: function() {
 
-    CountStore.on('update', this.handleDataChange);
+    ItemStore.on('update', this.handleDataChange);
 
   },
-  
+
   handleDataChange : function() {
-  
+
     this.setState({
-      count: CountStore.getCount()
+      items: ItemStore.getItems()
     });
-  
+
   },
 
   getInitialState: function() {
 
     return {
-      count: CountStore.getCount()
+      items: ItemStore.getItems()
     }
 
   },
@@ -28,7 +28,7 @@ var ComponentTwo = React.createClass({
 
     return (
       <div className="counter">
-        Clicked {this.state.count} times
+        There are {this.state.items.length} items in store.
       </div>
     )
 
